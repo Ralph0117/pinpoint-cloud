@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>PinPoint Alerts</title></head>
+<body>
+<h2>PinPoint Alerts</h2>
+<ul id="list"></ul>
+<script>
+fetch("/api/alerts")
+.then(r=>r.json())
+.then(j=>{
+  document.getElementById("list").innerHTML =
+    j.data.map(a =>
+      `<li>${a.student}: ${a.lat},${a.lng}</li>`
+    ).join("");
+});
+</script>
+</body>
+</html>
